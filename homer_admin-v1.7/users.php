@@ -411,25 +411,32 @@
                                         <tr>
                                             <th></th>
                                             <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input type="text" name="quantity" class="control-input"/></th>
-                                            <th><input type="text" name="price" class="control-input"/></th>
-                                            <th><input type="text" name="priceforpaid" class="control-input"/></th>
+                                            <th><input type="float" name="price" class="control-input"onchange="totalandtax()" value="0"/></th>
+											
+											<th><input type="text" name="priceforpaid" class="control-input"/></th>
+											<th><input type="text" name="quantity" class="control-input"/></th>
+                                            
+                                            
                                             <th></th>
                                         </tr>
                                         <tr>
                                             <th></th>
                                              <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input type="text" name="quantity" class="control-input"/></th>
-                                            <th><input type="text" name="price" class="control-input"/></th>
-                                            <th><input type="text" name="priceforpaid" class="control-input"/></th>
+                                            <th><input type="float" name="price1" class="control-input"onchange="totalandtax()"value="0"/></th>
+											<th><input type="text" name="priceforpaid" class="control-input" /></th>
+											<th><input type="text" name="quantity" class="control-input"/></th>
+                                            
+                                            
                                             <th></th>
                                         </tr>
                                         <tr>
                                             <th></th>
                                              <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input  type="text" name="quantity" class="control-input"/></th>
-                                            <th><input type="text" name="price" class="control-input"/></th>
+                                            <th><input type="float" name="price2" class="control-input" onchange="totalandtax()" value="0"/></th>
+											
+                                            
                                             <th><input type="text" name="priceforpaid" class="control-input"/></th>
+											<th><input  type="text" name="quantity" class="control-input"/></th>
                                             <th></th>
                                         </tr>
 
@@ -437,28 +444,28 @@
                                             <th>
                                                 <small>الضريبة</small>
                                             </th>
-                                            <th colspan="5"><input id="tax" type="text" name="tax" class="control-input" style="width:847px;margin-left: 53px;" />
+                                            <th colspan="5"><input id="taxx" type="text" name="taxin"  onchange="totalandtax()" class="control-input" style="width:847px;margin-left: 53px;" />
                                             </th>
                                         </tr>
                                         <tr style="background-color: #ccc;">
                                             <th colspan="5">
                                                 <small style="float: left;">المجموع</small>
                                             </th>
-                                            <th></th>
+                                            <th><div id="total"></div></th>
 
                                         </tr>
                                         <tr style="background-color: #ccc;">
                                             <th colspan="5">
-                                                <small style="float: left;">الضريبة</small>
+                                                <small style="float: left;" > الضريبة</small>
                                             </th>
-                                            <th></th>
+                                            <th><div id="taxout"></div></th>
 
                                         </tr>
                                         <tr style="background-color: #ccc;">
                                             <th colspan="5">
-                                                <small style="float: left;">المجموع بعد الضريبة</small>
+                                                <small style="float: left;"> المجموع بعد الضريبة</small>
                                             </th>
-                                            <th></th>
+                                            <th><div id="totalaftertax"></div></th>
 
                                         </tr>
                                         </tbody>
@@ -625,8 +632,29 @@
 <!-- App scripts -->
 <script src="scripts/homer.js"></script>
 <script src="scripts/charts.js"></script>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+<script>
+function totalandtax() {
+   var x = document.getElementsByName("price")[0].value; 
+   x= parseFloat(x);
+   var y = document.getElementsByName("price1")[0].value;
+y= parseFloat(y);   
+   var z = document.getElementsByName("price2")[0].value; 
+   z = parseFloat(z) ;
+   var total = x + y + z ;
+   document.getElementById("total").innerHTML = total;
+
+   var tax =  document.getElementsByName("taxin")[0].value;
+   tax = parseFloat(tax) ;
+   tax = (total*tax)/100;
+   document.getElementById("taxout").innerHTML = tax;
+   
+   document.getElementById("totalaftertax").innerHTML = total+tax;
+   
+   
+}
+</script>
+
 
 <script>
   $(function() {
