@@ -348,85 +348,17 @@
                                         <tr>
                                             <th style="text-align: center">الرقم  </th>
                                             <th style="text-align: center"> رقم الفاتورة </th>
-                                            <th style="text-align: center"> المنتجات </th>
+                                            
                                             <th style="text-align: center"> السعر الكلي </th>
                                             <th style="text-align: center"> تاريخ اصدار الفاتورة </th>
                                             <th style="text-align: center"> التحكم </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>076 9477 4896</td>
-                                            <td>294-318 Duis Ave</td>
-                                            <td>Vosselaar</td>
-                                            <td>Belgium</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>0500 034548</td>
-                                            <td>680-1097 Mi Rd.</td>
-                                            <td>Lavoir</td>
-                                            <td>Pakistan</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>(01315) 27698</td>
-                                            <td>Ap #289-8161 In Avenue</td>
-                                            <td>Santomenna</td>
-                                            <td>Burkina Faso</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>0500 854198</td>
-                                            <td>226-4861 Augue. St.</td>
-                                            <td>Newtown</td>
-                                            <td>Christmas Island</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>(01662) 59083</td>
-                                            <td>3219 Elit Avenue</td>
-                                            <td>Ternitz</td>
-                                            <td>Saint Martin</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>0877 118 6905</td>
-                                            <td>P.O. Box 410, 7331 Nec, St.</td>
-                                            <td>Glenrothes</td>
-                                            <td>Korea, North</td>
-                                            <td>
-                                                <button class="btn btn-xs btn-success"><i class="fa fa-check"></i> </button>
-                                                <button class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> </button>
-                                                <button class="btn btn-xs btn-danger"><i class="fa fa-times"></i> </button>
-                                            </td>
-                                        </tr>
+                                        <?php   
+										include 'customerinvoices.php';
+										?>
+                                        
                                         </tbody>
                                     </table>
 
