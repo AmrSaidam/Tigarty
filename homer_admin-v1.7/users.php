@@ -29,7 +29,48 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
   <link rel="stylesheet" href="/resources/demos/style.css">
-  
+  <script>
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("suppliername").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("suppliername").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","suppliername.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+<script>
+function product(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","getuser.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
 </head>
 <body>
 
@@ -348,9 +389,9 @@
                         <div class="row" style="margin-right:80px;margin-left:50px;"dir="rtl">
                             <div class="col-sm-12">
                                 <div style="text-align: center;">
-
+<form method = 'post' action='supplierinvoice.php'>
                                     <small style="font-size: medium" >اسم التاجر </small>
-                                    <select id="supplier" onchange="myFunction()">
+                                    <select id="supplier" name="supplierid" onchange="showUser(this.value)">
 									
 									<?php 
 									include "connectdb.php";
@@ -382,13 +423,14 @@
                                 </div>
                             </div>
 <div class="col-lg-5"></div>
-                            <div class="col-lg-4"style="font-size: medium">
+                            <div class="col-lg-4"style="font-size: medium" id="suppliername">
                                 <div >
-                                    <div >اسم التاجر: <div id="suppliername"></div> </div><span></span>
+                                    <div >اسم التاجر: <div ></div> </div><span></span>
                                     <div >العنوان:  <div id="place"></div></div><span></span>
                                     <div >الجوال:  <div id="phone"></div></div><span></span>
                                     <div>البريد الالكتروني: <div id="email"></div> </div><span></span>
                                 </div>
+								
                             </div>
                         </div>
 
@@ -407,13 +449,13 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
+										
                                         <tr>
                                             <th></th>
                                             <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input type="float" name="price" class="control-input"onchange="totalandtax()" value="0"/></th>
+                                            <th><input type="number" name="price" class="control-input"onchange="totalandtax()" value="0"/></th>
 											
-											<th><input type="text" name="priceforpaid" class="control-input"/></th>
+											<th><input type="number" name="priceforpaid" class="control-input"/></th>
 											<th><input type="text" name="quantity" class="control-input"/></th>
                                             
                                             
@@ -421,22 +463,22 @@
                                         </tr>
                                         <tr>
                                             <th></th>
-                                             <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input type="float" name="price1" class="control-input"onchange="totalandtax()"value="0"/></th>
-											<th><input type="text" name="priceforpaid" class="control-input" /></th>
-											<th><input type="text" name="quantity" class="control-input"/></th>
+                                             <th><input id="productname" type="text" name="productname1" class="control-input"/></th>
+                                            <th><input type="number" name="price1" class="control-input"onchange="totalandtax()"value="0"/></th>
+											<th><input type="number" name="priceforpaid1" class="control-input" /></th>
+											<th><input type="text" name="quantity1" class="control-input"/></th>
                                             
                                             
                                             <th></th>
                                         </tr>
                                         <tr>
                                             <th></th>
-                                             <th><input id="productname" type="text" name="productname" class="control-input"/></th>
-                                            <th><input type="float" name="price2" class="control-input" onchange="totalandtax()" value="0"/></th>
+                                             <th><input id="productname" type="text" name="productname2" class="control-input"/></th>
+                                            <th><input type="number" name="price2" class="control-input" onchange="totalandtax()" value="0"/></th>
 											
                                             
-                                            <th><input type="text" name="priceforpaid" class="control-input"/></th>
-											<th><input  type="text" name="quantity" class="control-input"/></th>
+                                            <th><input type="number" name="priceforpaid2" class="control-input"/></th>
+											<th><input  type="text" name="quantity2" class="control-input"/></th>
                                             <th></th>
                                         </tr>
 
@@ -477,7 +519,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div style="text-align: center;">
-                                    <form>
+                                    
                                         <button type="reset" class="btn btn-danger" style="width:30%;">الغاء</button>
                                         <button type="submit" class="btn btn-info" style="width:30%;">اعتماد</button>
                                     </form>
