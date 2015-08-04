@@ -51,24 +51,20 @@ function showUser(str) {
 }
 </script>
 <script>
-function product(str) {
-  if (str=="") {
-    document.getElementById("txtHint").innerHTML="";
-    return;
-  } 
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else { // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-    }
-  }
-  xmlhttp.open("GET","getuser.php?q="+str,true);
-  xmlhttp.send();
+function showHint(str) {
+     if (str.length == 0) { 
+         document.getElementById("prices").innerHTML = "";
+         return;
+     } else {
+         var xmlhttp = new XMLHttpRequest();
+         xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                 document.getElementById("prices").innerHTML = xmlhttp.responseText;
+             }
+         }
+         xmlhttp.open("GET", "getprice.php?q="+str, true);
+         xmlhttp.send();
+     }
 }
 </script>
 </head>
@@ -452,9 +448,10 @@ function product(str) {
 										
                                         <tr>
                                             <th></th>
-                                            <th><input id="productname" type="text" name="productname" class="control-input"/></th>
+                                            <th><input id="productname" type="text" name="productname" class="control-input" onkeyup="showHint(this.value)"/></th>
+											<div id="prices">
                                             <th><input type="number" name="price" class="control-input"onchange="totalandtax()" value="0"/></th>
-											
+											</div>
 											<th><input type="number" name="priceforpaid" class="control-input"/></th>
 											<th><input type="text" name="quantity" class="control-input"/></th>
                                             
